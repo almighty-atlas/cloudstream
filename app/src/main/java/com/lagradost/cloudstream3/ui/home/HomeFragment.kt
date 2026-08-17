@@ -795,6 +795,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                 homeChangeApi.text = apiName
                 homePreviewReloadProvider.isGone = (apiName == noneApi.name)
                 homePreviewSearchButton.isGone = (apiName == noneApi.name)
+                // Names the provider, so this reads apart from the global
+                // search in the navigation rail, which carries the same icon.
+                homePreviewSearchButton.contentDescription =
+                    getString(R.string.search_hint_site, apiName)
             }
         }
 
