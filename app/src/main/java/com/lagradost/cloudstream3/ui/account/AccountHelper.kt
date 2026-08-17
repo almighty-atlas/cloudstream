@@ -41,6 +41,7 @@ import com.lagradost.cloudstream3.utils.UIHelper.hideProgress
 import com.lagradost.cloudstream3.utils.UIHelper.navigate
 import com.lagradost.cloudstream3.utils.UIHelper.showInputMethod
 import com.lagradost.cloudstream3.utils.UIHelper.showProgress
+import com.lagradost.cloudstream3.utils.UIHelper.applyOverscan
 
 object AccountHelper {
     fun showAccountEditDialog(
@@ -171,6 +172,7 @@ object AccountHelper {
             val sheetBinding = BottomInputDialogBinding.inflate(LayoutInflater.from(context))
             bottomSheetDialog.setContentView(sheetBinding.root)
             bottomSheetDialog.show()
+            bottomSheetDialog.applyOverscan()
 
             sheetBinding.apply {
                 text1.text = context.getString(R.string.edit_profile_image_title)
@@ -366,6 +368,7 @@ object AccountHelper {
         val builder = BottomSheetDialog(activity)
         builder.setContentView(binding.root)
         builder.show()
+        builder.applyOverscan()
 
         binding.manageAccountsButton.setOnClickListener {
             activity.navigate(

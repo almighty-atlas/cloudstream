@@ -88,6 +88,23 @@ import com.lagradost.cloudstream3.utils.BackPressedCallbackHelper.disableBackPre
 import com.lagradost.cloudstream3.utils.BackPressedCallbackHelper.enableBackPressedCallback
 
 object UIHelper {
+    /**
+     * Applies the user's Overscan preference to a dialog.
+     *
+     * MainActivity pads homeRoot with that value, but a dialog runs in its own
+     * window and is not a child of it, so dialogs kept reaching the panel edge
+     * no matter what was configured. Call this after show(), once the window
+     * has a decor view.
+     */
+    fun Dialog.applyOverscan() {
+        if (!isLayout(TV)) return
+        val padding = PreferenceManager.getDefaultSharedPreferences(context)
+            .getInt(context.getString(R.string.overscan_key), 0).toPx
+        if (padding <= 0) return
+        window?.findViewById<View>(android.R.id.content)
+            ?.setPadding(padding, padding, padding, padding)
+    }
+
     val Int.toPx: Int get() = (this * Resources.getSystem().displayMetrics.density).toInt()
     val Float.toPx: Float get() = (this * Resources.getSystem().displayMetrics.density)
     val Int.toDp: Int get() = (this / Resources.getSystem().displayMetrics.density).toInt()

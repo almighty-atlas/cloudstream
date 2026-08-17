@@ -27,9 +27,11 @@ import com.lagradost.cloudstream3.ui.settings.Globals.TV
 import com.lagradost.cloudstream3.ui.settings.Globals.isLayout
 import com.lagradost.cloudstream3.utils.ImageLoader.loadImage
 import com.lagradost.cloudstream3.utils.UIHelper.dismissSafe
+import com.lagradost.cloudstream3.utils.UIHelper.applyOverscan
 import com.lagradost.cloudstream3.utils.UIHelper.popupMenuNoIconsAndNoStringRes
 
 object SingleSelectionHelper {
+
     fun Activity?.showOptionSelectStringRes(
         view: View?,
         poster: String?,
@@ -241,6 +243,7 @@ object SingleSelectionHelper {
 
         val dialog = builder.create()
         dialog.show()
+        dialog.applyOverscan()
         showDialog(
             binding,
             dialog,
@@ -273,6 +276,7 @@ object SingleSelectionHelper {
 
         val dialog = builder.create()
         dialog.show()
+        dialog.applyOverscan()
 
 
         showDialog(
@@ -308,6 +312,7 @@ object SingleSelectionHelper {
         builder.setContentView(binding.root)
 
         builder.show()
+        builder.applyOverscan()
         showDialog(
             binding,
             builder,
@@ -337,6 +342,7 @@ object SingleSelectionHelper {
         //builder.setContentView(R.layout.bottom_selection_dialog_direct)
         builder.setContentView(binding.root)
         builder.show()
+        builder.applyOverscan()
         showDialog(
             binding,
             builder,
@@ -368,6 +374,7 @@ object SingleSelectionHelper {
         builder.setContentView(binding.root)
 
         builder.show()
+        builder.applyOverscan()
         showInputDialog(
             binding,
             builder,
@@ -397,5 +404,6 @@ object SingleSelectionHelper {
         }
 
         dialog.show()
+        dialog.applyOverscan()
     }
 }

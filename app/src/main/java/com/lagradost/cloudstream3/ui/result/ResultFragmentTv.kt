@@ -62,6 +62,7 @@ import com.lagradost.cloudstream3.utils.UIHelper.hideKeyboard
 import com.lagradost.cloudstream3.utils.UIHelper.navigate
 import com.lagradost.cloudstream3.utils.UIHelper.populateChips
 import com.lagradost.cloudstream3.utils.UIHelper.setNavigationBarColorCompat
+import com.lagradost.cloudstream3.utils.UIHelper.applyOverscan
 import com.lagradost.cloudstream3.utils.getImageFromDrawable
 import com.lagradost.cloudstream3.utils.setText
 import com.lagradost.cloudstream3.utils.setTextHtml
@@ -756,6 +757,7 @@ class ResultFragmentTv : BaseFragment<FragmentResultTvBinding>(
                 }
                 builder.setCanceledOnTouchOutside(true)
                 builder.show()
+                builder.applyOverscan()
                 builder
             }
             loadingDialog?.findViewById<MaterialButton>(R.id.overlay_loading_skip_button)?.apply {

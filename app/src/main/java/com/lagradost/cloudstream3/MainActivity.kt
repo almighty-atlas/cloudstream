@@ -174,6 +174,7 @@ import com.lagradost.cloudstream3.utils.UIHelper.requestRW
 import com.lagradost.cloudstream3.utils.UIHelper.setNavigationBarColorCompat
 import com.lagradost.cloudstream3.utils.UIHelper.showProgress
 import com.lagradost.cloudstream3.utils.UIHelper.toPx
+import com.lagradost.cloudstream3.utils.UIHelper.applyOverscan
 import com.lagradost.cloudstream3.utils.USER_PROVIDER_API
 import com.lagradost.cloudstream3.utils.USER_SELECTED_HOMEPAGE_API
 import com.lagradost.cloudstream3.utils.downloader.DownloadQueueManager
@@ -898,6 +899,7 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener, BiometricCa
             }
             builder.setCanceledOnTouchOutside(true)
             builder.show()
+            builder.applyOverscan()
             bottomPreviewPopup = builder
             binding
         })

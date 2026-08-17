@@ -83,6 +83,7 @@ import com.lagradost.cloudstream3.utils.UIHelper.getSpanCount
 import com.lagradost.cloudstream3.utils.UIHelper.navigate
 import com.lagradost.cloudstream3.utils.UIHelper.popupMenuNoIconsAndNoStringRes
 import com.lagradost.cloudstream3.utils.UIHelper.toPx
+import com.lagradost.cloudstream3.utils.UIHelper.applyOverscan
 
 private const val TAG = "HomeFragment"
 
@@ -263,6 +264,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
             //(recycle.adapter as SearchAdapter).notifyDataSetChanged()
 
             bottomSheetDialogBuilder.show()
+            bottomSheetDialogBuilder.applyOverscan()
             return bottomSheetDialogBuilder
         }
 
@@ -388,6 +390,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 
             builder.setContentView(binding.root)
             builder.show()
+            builder.applyOverscan()
             builder.let { dialog ->
                 val isMultiLang = getApiProviderLangSettings().let { set ->
                     set.size > 1 || set.contains(AllLanguagesName)
