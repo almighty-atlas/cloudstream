@@ -12,6 +12,7 @@ import com.lagradost.cloudstream3.TvType
 import com.lagradost.cloudstream3.databinding.FragmentSetupMediaBinding
 import com.lagradost.cloudstream3.mvvm.safe
 import com.lagradost.cloudstream3.ui.BaseFragment
+import com.lagradost.cloudstream3.utils.AppContextUtils.stringRes
 import com.lagradost.cloudstream3.utils.DataStoreHelper
 import com.lagradost.cloudstream3.utils.UIHelper.fixSystemBarsPadding
 
@@ -31,10 +32,12 @@ class SetupFragmentMedia : BaseFragment<FragmentSetupMediaBinding>(
             val arrayAdapter =
                 ArrayAdapter<String>(ctx, R.layout.sort_bottom_single_choice)
 
-            val names = enumValues<TvType>().sorted().map { it.name }
+            // The adapter shows translated labels, so keep the types in a
+            // parallel list and resolve the selection by position.
+            val types = enumValues<TvType>().sorted()
             val selected = mutableListOf<Int>()
 
-            arrayAdapter.addAll(names)
+            arrayAdapter.addAll(types.map { ctx.getString(it.stringRes()) })
             binding.apply {
                 listview1.let {
                     it.adapter = arrayAdapter
@@ -49,10 +52,7 @@ class SetupFragmentMedia : BaseFragment<FragmentSetupMediaBinding>(
                             }
                         }
                         val prefValues = selected.mapNotNull { pos ->
-                            val item =
-                                it.getItemAtPosition(pos)?.toString() ?: return@mapNotNull null
-                            val itemVal = TvType.valueOf(item)
-                            itemVal.ordinal.toString()
+                            types.getOrNull(pos)?.ordinal?.toString()
                         }.toSet()
                         settingsManager.edit {
                             putStringSet(getString(R.string.prefer_media_type_key), prefValues)

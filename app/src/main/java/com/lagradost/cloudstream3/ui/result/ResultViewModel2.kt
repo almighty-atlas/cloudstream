@@ -83,6 +83,7 @@ import com.lagradost.cloudstream3.utils.AppContextUtils.getNameFull
 import com.lagradost.cloudstream3.utils.AppContextUtils.isConnectedToChromecast
 import com.lagradost.cloudstream3.utils.AppContextUtils.setDefaultFocus
 import com.lagradost.cloudstream3.utils.AppContextUtils.sortSubs
+import com.lagradost.cloudstream3.utils.AppContextUtils.stringRes
 import com.lagradost.cloudstream3.utils.AppUtils.toJson
 import com.lagradost.cloudstream3.utils.CastHelper.startCast
 import com.lagradost.cloudstream3.utils.Coroutines.ioSafe
@@ -305,28 +306,7 @@ fun LoadResponse.toResultData(repo: APIRepository): ResultData {
         backgroundPosterUrl = backgroundPosterUrl,
         logoUrl = logoUrl,
         title = name,
-        typeText = txt(
-            when (type) {
-                TvType.TvSeries -> R.string.tv_series_singular
-                TvType.Anime -> R.string.anime_singular
-                TvType.OVA -> R.string.ova_singular
-                TvType.AnimeMovie -> R.string.movies_singular
-                TvType.Cartoon -> R.string.cartoons_singular
-                TvType.Documentary -> R.string.documentaries_singular
-                TvType.Movie -> R.string.movies_singular
-                TvType.Torrent -> R.string.torrent_singular
-                TvType.AsianDrama -> R.string.asian_drama_singular
-                TvType.Live -> R.string.live_singular
-                TvType.Others -> R.string.other_singular
-                TvType.NSFW -> R.string.nsfw_singular
-                TvType.Music -> R.string.music_singular
-                TvType.AudioBook -> R.string.audio_book_singular
-                TvType.CustomMedia -> R.string.custom_media_singular
-                TvType.Audio -> R.string.audio_singular
-                TvType.Podcast -> R.string.podcast_singular
-                TvType.Video -> R.string.video_singular
-            }
-        ),
+        typeText = txt(type.stringRes()),
         yearText = txt(year?.toString()),
         apiName = txt(apiName),
         ratingText = score?.toStringNull(0.1, 10, 1, false, '.')

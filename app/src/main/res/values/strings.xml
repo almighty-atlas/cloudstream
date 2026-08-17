@@ -280,6 +280,7 @@
     <string name="others">Others</string>
     <!--singular-->
     <string name="movies_singular">Movie</string>
+    <string name="anime_movie_singular">Anime Movie</string>
     <string name="tv_series_singular">Series</string>
     <string name="cartoons_singular">Cartoon</string>
     <string name="anime_singular">Anime</string>
