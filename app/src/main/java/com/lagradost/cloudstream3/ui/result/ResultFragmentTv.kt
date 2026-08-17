@@ -333,10 +333,9 @@ class ResultFragmentTv : BaseFragment<FragmentResultTvBinding>(
                 resultEpisodesShowButton to resultEpisodesShowText
             ).forEach { (button, text) ->
 
-                button.setOnFocusChangeListener { view, hasFocus ->
+                button.setOnFocusChangeListener { _, hasFocus ->
                     if (!hasFocus) {
                         text.isSelected = false
-                        if (view.id == R.id.result_episodes_show_button) toggleEpisodes(false)
                         return@setOnFocusChangeListener
                     }
 
@@ -344,14 +343,11 @@ class ResultFragmentTv : BaseFragment<FragmentResultTvBinding>(
                     if (button.tag == context?.getString(R.string.tv_no_focus_tag)) {
                         resultFinishLoading.scrollTo(0, 0)
                     }
-                    when (button.id) {
-                        R.id.result_episodes_show_button -> {
-                            toggleEpisodes(true)
-                        }
-
-                        else -> {
-                            toggleEpisodes(false)
-                        }
+                    // Merely focusing a button must not open the episode pane.
+                    // It opens on select, or on moving right into
+                    // redirectToEpisodes, which also puts focus inside it.
+                    if (button.id != R.id.result_episodes_show_button) {
+                        toggleEpisodes(false)
                     }
                 }
             }
@@ -359,7 +355,23 @@ class ResultFragmentTv : BaseFragment<FragmentResultTvBinding>(
             resultEpisodesShowButton.setOnClickListener {
                 // toggle, to make it more touch accessible just in case someone thinks that a
                 // tv layout is better but is using a touch device
-                toggleEpisodes(!episodeHolderTv.isVisible)
+                val show = !episodeHolderTv.isVisible
+                toggleEpisodes(show)
+
+                // Selecting the button commits to the pane, so put focus inside
+                // it. Posted because the holder has only just become visible.
+                if (show) episodeHolderTv.post {
+                    val views = listOf(
+                        resultDubSelection,
+                        resultSeasonSelection,
+                        resultRangeSelection,
+                        resultEpisodes,
+                    )
+                    for (requestView in views) {
+                        if (!requestView.isShown) continue
+                        if (requestView.requestFocus()) break
+                    }
+                }
             }
 
             resultEpisodes.setLinearListLayout(
