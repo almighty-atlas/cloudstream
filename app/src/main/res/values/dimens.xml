@@ -2,10 +2,6 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-
-    <!-- Horizontal inset for full width lists. Overridden in values-television,
-         where the outer 5% of the panel can be lost to overscan. -->
-    <dimen name="setup_list_horizontal_inset">16dp</dimen>
     <dimen name="rounded_image_radius">10dp</dimen>
     <dimen name="rounded_button_radius">4dp</dimen>
 
