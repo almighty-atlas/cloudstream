@@ -29,6 +29,7 @@ import androidx.annotation.MainThread
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.core.view.children
@@ -1721,6 +1722,18 @@ class MainActivity : AppCompatActivity(), ColorPickerDialogListener, BiometricCa
                 itemSpacing = 12.toPx // expandedItemSpacing does not have an attr
                 itemRippleColor = rippleColorTransparent
                 itemActiveIndicatorColor = rippleColor
+
+                // Focus and selection are otherwise the same circle at 20% and
+                // 100% opacity, which does not read from across a room. Give
+                // the items the outline that the profile card below them and
+                // the rest of the TV layouts already use.
+                for (index in 0 until menu.size()) {
+                    findViewById<View>(menu.getItem(index).itemId)?.foreground =
+                        ContextCompat.getDrawable(
+                            context,
+                            R.drawable.outline_drawable_round_20
+                        )
+                }
             }
             setupWithNavController(navController)
             /*if (isLayout(TV or EMULATOR)) {
