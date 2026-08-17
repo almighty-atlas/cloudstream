@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <!-- Created before Application.onCreate, which is the only reason this
+             is a ContentProvider: it lets the offline test fixture register
+             itself without a hook in the main source set. Debug builds only. -->
+        <provider
+            android:name="com.lagradost.cloudstream3.testfixture.TestFixtureInstaller"
+            android:authorities="${applicationId}.testfixture"
+            android:enabled="true"
+            android:exported="false" />
+    </application>
+
+</manifest>
