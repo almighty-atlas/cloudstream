@@ -92,7 +92,7 @@
                         android:layout_gravity="end|center_vertical"
                         android:layout_margin="10dp"
                         android:background="?selectableItemBackgroundBorderless"
-                        android:contentDescription="@string/change_providers_img_des"
+                        android:contentDescription="@string/search_filter_img_des"
                         android:focusable="true"
                         android:nextFocusLeft="@id/year_btt"
                         android:nextFocusRight="@id/main_search"

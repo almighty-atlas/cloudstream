@@ -34,7 +34,7 @@
                 android:layout_gravity="end|center_vertical"
                 android:layout_marginStart="10dp"
                 android:background="?selectableItemBackgroundBorderless"
-                android:contentDescription="@string/change_providers_img_des"
+                android:contentDescription="@string/voice_search_img_des"
                 android:src="@drawable/ic_mic"
                 app:tint="?attr/textColor" />
 
@@ -102,7 +102,7 @@
 
                     android:layout_margin="10dp"
                     android:background="?selectableItemBackgroundBorderless"
-                    android:contentDescription="@string/change_providers_img_des"
+                    android:contentDescription="@string/search_filter_img_des"
                     android:nextFocusLeft="@id/main_search"
                     android:nextFocusRight="@id/main_search"
                     android:nextFocusUp="@id/nav_rail_view"

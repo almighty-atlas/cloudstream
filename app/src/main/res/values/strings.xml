@@ -21,6 +21,8 @@
     <string name="play_from_beginning_img_des">Play from the Beginning</string>
     <string name="home_change_provider_img_des">Change Provider</string>
     <string name="preview_background_img_des">Preview Background</string>
+    <string name="voice_search_img_des">Voice Search</string>
+    <string name="search_filter_img_des">Search Filters</string>
     <!-- TRANSLATE, BUT DON'T FORGET FORMAT -->
     <string name="player_speed_text_format" formatted="true">Speed (%.2fx)</string>
     <string name="rated_format" formatted="true">Rated: %.1f</string>
