@@ -1,0 +1,6 @@
+<resources>
+    <!-- Android TV guidance reserves 5% of each edge for overscan. At 1920x1080
+         with 320dpi that is 96px, so 48dp. Without it the focus ring around a
+         full width row runs to the panel edge and its sides can be cut off. -->
+    <dimen name="setup_list_horizontal_inset">48dp</dimen>
+</resources>
